@@ -1,55 +1,21 @@
-<footer class="site-footer">
-  <div class="container footer-inner">
-    <div>
-      <p class="eyebrow">SBAN Platería</p>
-      <p class="footer-copy">
-        Plata hecha a mano para quienes valoran diseño, detalle y permanencia.
-      </p>
-    </div>
-    <div class="footer-meta">
-      <a href="mailto:hola@sbanplateria.com">hola@sbanplateria.com</a>
-      <span>Ciudad de México, México</span>
-      <span>© 2026 SBAN Platería</span>
+<footer class="pb-12 pt-8">
+  <div class="app-container">
+    <div class="glass-panel flex flex-col gap-6 px-6 py-7 md:flex-row md:items-start md:justify-between md:px-8">
+      <div class="space-y-4">
+        <p class="eyebrow">
+          <span class="eyebrow-line"></span>
+          SBAN Plateria
+        </p>
+        <p class="max-w-xl text-sm leading-8 text-muted">
+          Plata hecha a mano para quienes valoran diseno, detalle y permanencia.
+        </p>
+      </div>
+
+      <div class="grid gap-1 text-sm leading-8 text-muted md:justify-items-end">
+        <a href="mailto:hola@sbanplateria.com">hola@sbanplateria.com</a>
+        <span>Ciudad de Mexico, Mexico</span>
+        <span>© 2026 SBAN Plateria</span>
+      </div>
     </div>
   </div>
 </footer>
-
-<style>
-  .site-footer {
-    padding: 2rem 0 3rem;
-  }
-
-  .footer-inner {
-    display: flex;
-    justify-content: space-between;
-    gap: 1.5rem;
-    padding: 1.75rem 2rem;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(16px);
-  }
-
-  .footer-copy,
-  .footer-meta {
-    margin: 0;
-    color: var(--color-muted);
-    line-height: 1.8;
-  }
-
-  .footer-meta {
-    display: grid;
-    justify-items: end;
-  }
-
-  @media (max-width: 720px) {
-    .footer-inner {
-      flex-direction: column;
-      padding: 1.5rem;
-    }
-
-    .footer-meta {
-      justify-items: start;
-    }
-  }
-</style>

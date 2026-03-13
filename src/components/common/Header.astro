@@ -4,72 +4,98 @@ import { navigationItems } from "@/data/site";
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="site-header" data-header>
-  <div class="container header-wrap">
-    <div class="header-inner">
-      <a class="brand" href="/" aria-label="SBAN Plateria, ir al inicio">
-        <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 64 64">
+<header class="sticky top-0 z-40 pt-3 md:pt-4" data-header>
+  <div class="app-container relative">
+    <div
+      class="flex min-h-[4.25rem] items-center justify-between gap-4 rounded-[1.75rem] border border-line bg-[#faf8f4]/80 px-3.5 py-2.5 backdrop-blur-[18px] transition-shadow duration-200 md:min-h-20 md:rounded-full md:px-4"
+      data-header-inner
+    >
+      <a class="inline-flex min-w-0 items-center gap-3" href="/" aria-label="SBAN Plateria, ir al inicio">
+        <span class="grid h-10 w-10 flex-none place-items-center rounded-full bg-white/75 text-ink md:h-11 md:w-11">
+          <svg class="h-full w-full p-1.5" viewBox="0 0 64 64">
             <circle cx="32" cy="32" r="30" fill="none" stroke="currentColor" stroke-width="1.4"></circle>
             <path d="M18 37c4-9 9-13 14-13 8 0 10 12 16 12 4 0 7-2 10-8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.4"></path>
             <path d="M20 21h24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.4"></path>
           </svg>
         </span>
-        <span class="brand-copy">
-          <strong>SBAN</strong>
-          <small>Plateria</small>
+        <span class="grid leading-none">
+          <strong class="text-[0.95rem] tracking-[0.18em] md:text-base">SBAN</strong>
+          <small class="mt-1 text-[0.7rem] uppercase tracking-[0.24em] text-muted md:text-[0.8rem]">Plateria</small>
         </span>
       </a>
 
-      <nav class="navigation navigation-desktop" aria-label="Principal">
+      <nav class="hidden items-center gap-1 lg:flex" aria-label="Principal">
         {navigationItems.map((item) => (
-          <a class:list={["nav-link", currentPath === item.href && "is-active"]} href={item.href}>
+          <a
+            class:list={[
+              "rounded-full px-4 py-3 text-[0.95rem] font-semibold text-muted transition-colors duration-200 hover:text-ink focus-visible:text-ink",
+              currentPath === item.href && "text-ink"
+            ]}
+            href={item.href}
+          >
             {item.label}
           </a>
         ))}
-        <a class="button-link nav-cta" href="/contacto">Agenda una asesoria</a>
+        <a class="action-button ml-2" href="/contacto">Agenda una asesoria</a>
       </nav>
 
       <button
-        class="menu-button"
+        class="inline-grid h-12 w-12 flex-none place-items-center rounded-full border border-line bg-white/90 text-ink lg:hidden"
         type="button"
         aria-expanded="false"
         aria-controls="mobile-menu"
         aria-label="Abrir navegacion"
         data-menu-button
       >
-        <svg class="menu-icon" aria-hidden="true" viewBox="0 0 24 24">
+        <svg class="h-5 w-5" aria-hidden="true" viewBox="0 0 24 24">
           <path d="M6 9.25h12" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path>
           <path d="M6 14.75h12" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path>
         </svg>
       </button>
     </div>
 
-    <div class="mobile-menu-shell" data-mobile-shell hidden>
-      <div class="mobile-backdrop" data-mobile-backdrop></div>
-      <nav id="mobile-menu" class="mobile-menu" aria-label="Principal" data-mobile-menu>
-        <div class="mobile-menu-header">
-          <span class="mobile-menu-label">Menu</span>
-          <button class="mobile-close" type="button" aria-label="Cerrar navegacion" data-menu-close>
-            <span></span>
-            <span></span>
+    <div class="fixed inset-0 z-30 hidden" data-mobile-shell hidden>
+      <div class="absolute inset-0 bg-ink/18 backdrop-blur-md" data-mobile-backdrop></div>
+      <nav
+        id="mobile-menu"
+        class="absolute left-1/2 top-[5.25rem] grid w-[calc(100vw-1rem)] max-w-sm -translate-x-1/2 gap-5 rounded-[1.75rem] border border-line bg-[#faf8f4]/95 p-4 shadow-[var(--shadow-panel)] backdrop-blur-[22px] sm:w-[calc(100vw-2rem)]"
+        aria-label="Principal"
+        data-mobile-menu
+      >
+        <div class="flex items-center justify-between gap-4">
+          <span class="text-[0.8rem] font-bold uppercase tracking-[0.16em] text-muted">Menu</span>
+          <button
+            class="relative h-10 w-10 rounded-full border border-line bg-white/70"
+            type="button"
+            aria-label="Cerrar navegacion"
+            data-menu-close
+          >
+            <span class="absolute left-1/2 top-1/2 h-px w-4 -translate-x-1/2 -translate-y-1/2 rotate-45 bg-ink"></span>
+            <span class="absolute left-1/2 top-1/2 h-px w-4 -translate-x-1/2 -translate-y-1/2 -rotate-45 bg-ink"></span>
           </button>
         </div>
 
-        <div class="mobile-links">
+        <div class="grid gap-1.5">
           {navigationItems.map((item) => (
-            <a class:list={["mobile-link", currentPath === item.href && "is-active"]} href={item.href} data-mobile-link>
-              <span>{item.label}</span>
-              <svg aria-hidden="true" viewBox="0 0 24 24">
+            <a
+              class:list={[
+                "flex min-h-14 items-center justify-between gap-4 rounded-3xl bg-white/70 px-4 py-4 text-ink transition duration-200 hover:-translate-y-0.5 hover:bg-white/95 focus-visible:-translate-y-0.5 focus-visible:bg-white/95",
+                currentPath === item.href && "bg-brand-soft/35"
+              ]}
+              href={item.href}
+              data-mobile-link
+            >
+              <span class="text-base font-semibold">{item.label}</span>
+              <svg aria-hidden="true" class="h-4 w-4 flex-none" viewBox="0 0 24 24">
                 <path d="M8 16 16 8M10 8h6v6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
               </svg>
             </a>
           ))}
         </div>
 
-        <a class="button-link is-primary mobile-cta" href="/contacto" data-mobile-link>
+        <a class="action-button action-button-primary min-h-14 w-full" href="/contacto" data-mobile-link>
           <span>Agenda una asesoria</span>
-          <svg aria-hidden="true" viewBox="0 0 24 24">
+          <svg aria-hidden="true" class="h-4 w-4 flex-none" viewBox="0 0 24 24">
             <path d="M7 17L17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
           </svg>
         </a>
@@ -81,13 +107,24 @@ const currentPath = Astro.url.pathname;
 <script>
   import { gsap } from "gsap";
 
+  const header = document.querySelector("[data-header]");
+  const headerInner = document.querySelector("[data-header-inner]");
   const menuButton = document.querySelector("[data-menu-button]");
   const closeButton = document.querySelector("[data-menu-close]");
   const mobileShell = document.querySelector("[data-mobile-shell]");
   const mobileMenu = document.querySelector("[data-mobile-menu]");
   const mobileBackdrop = document.querySelector("[data-mobile-backdrop]");
   const mobileLinks = document.querySelectorAll("[data-mobile-link]");
-  const mobileQuery = window.matchMedia("(max-width: 900px)");
+  const mobileQuery = window.matchMedia("(max-width: 1023px)");
+
+  if (header instanceof HTMLElement && headerInner instanceof HTMLElement) {
+    const syncHeaderState = () => {
+      headerInner.classList.toggle("shadow-[0_18px_50px_rgba(24,32,42,0.08)]", window.scrollY > 24);
+    };
+
+    syncHeaderState();
+    window.addEventListener("scroll", syncHeaderState, { passive: true });
+  }
 
   if (
     menuButton instanceof HTMLButtonElement &&
@@ -102,6 +139,7 @@ const currentPath = Astro.url.pathname;
 
     const setClosedState = () => {
       mobileShell.hidden = true;
+      mobileShell.classList.add("hidden");
       menuButton.setAttribute("aria-expanded", "false");
       document.body.style.overflow = "";
       isOpen = false;
@@ -136,6 +174,7 @@ const currentPath = Astro.url.pathname;
       }
 
       mobileShell.hidden = false;
+      mobileShell.classList.remove("hidden");
       isOpen = true;
       menuButton.setAttribute("aria-expanded", "true");
       document.body.style.overflow = "hidden";
@@ -163,6 +202,7 @@ const currentPath = Astro.url.pathname;
         gsap.set(mobileBackdrop, { clearProps: "all" });
         gsap.set(mobileMenu, { clearProps: "all" });
         mobileShell.hidden = true;
+        mobileShell.classList.add("hidden");
       }
     };
 
@@ -192,295 +232,3 @@ const currentPath = Astro.url.pathname;
     syncMode();
   }
 </script>
-
-<style>
-  .site-header {
-    position: sticky;
-    top: 0;
-    z-index: 40;
-    padding: 1rem 0 0;
-  }
-
-  .site-header[data-scrolled] .header-inner {
-    box-shadow: 0 18px 50px rgba(24, 32, 42, 0.08);
-  }
-
-  .header-wrap {
-    position: relative;
-  }
-
-  .header-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    min-height: 5rem;
-    padding: 0.75rem 1rem;
-    border: 1px solid rgba(24, 32, 42, 0.08);
-    border-radius: 999px;
-    background: rgba(250, 248, 244, 0.78);
-    backdrop-filter: blur(18px);
-  }
-
-  .brand {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.9rem;
-    min-width: 0;
-  }
-
-  .brand-mark {
-    width: 2.8rem;
-    height: 2.8rem;
-    flex: 0 0 auto;
-    display: grid;
-    place-items: center;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.72);
-    color: var(--color-text);
-  }
-
-  .brand-copy {
-    display: grid;
-    line-height: 1;
-  }
-
-  .brand-copy strong {
-    font-size: 1rem;
-    letter-spacing: 0.18em;
-  }
-
-  .brand-copy small {
-    margin-top: 0.25rem;
-    color: var(--color-muted);
-    font-size: 0.8rem;
-    letter-spacing: 0.24em;
-    text-transform: uppercase;
-  }
-
-  .navigation-desktop {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-  }
-
-  .nav-link {
-    padding: 0.7rem 0.9rem;
-    color: var(--color-muted);
-    font-size: 0.95rem;
-    font-weight: 600;
-    transition: color 180ms ease;
-  }
-
-  .nav-link:hover,
-  .nav-link:focus-visible,
-  .nav-link.is-active {
-    color: var(--color-text);
-  }
-
-  .nav-cta {
-    margin-left: 0.5rem;
-    padding-block: 0.8rem;
-  }
-
-  .menu-button,
-  .mobile-menu-shell {
-    display: none;
-  }
-
-  .menu-button {
-    width: 3rem;
-    height: 3rem;
-    flex: 0 0 auto;
-    display: inline-grid;
-    place-items: center;
-    border: 1px solid var(--color-border);
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.88);
-    color: var(--color-text);
-    cursor: pointer;
-  }
-
-  .menu-icon {
-    width: 1.2rem;
-    height: 1.2rem;
-  }
-
-  .mobile-menu-shell[hidden] {
-    display: none !important;
-  }
-
-  @media (max-width: 900px) {
-    .site-header {
-      padding-top: 0.75rem;
-    }
-
-    .header-inner {
-      min-height: 4.5rem;
-      padding: 0.65rem 0.75rem 0.65rem 0.85rem;
-      border-radius: 28px;
-    }
-
-    .brand-copy strong {
-      font-size: 0.95rem;
-    }
-
-    .brand-copy small {
-      font-size: 0.72rem;
-    }
-
-    .navigation-desktop {
-      display: none;
-    }
-
-    .menu-button {
-      display: inline-flex;
-    }
-
-    .mobile-menu-shell {
-      position: fixed;
-      inset: 0;
-      z-index: 30;
-      display: block;
-      pointer-events: none;
-    }
-
-    .mobile-backdrop {
-      position: absolute;
-      inset: 0;
-      background: rgba(24, 32, 42, 0.18);
-      backdrop-filter: blur(8px);
-      pointer-events: auto;
-    }
-
-    .mobile-menu {
-      position: absolute;
-      top: calc(0.75rem + 5.2rem);
-      left: 50%;
-      width: min(calc(100vw - 2rem), 25rem);
-      display: grid;
-      gap: 1.25rem;
-      padding: 1.1rem;
-      border: 1px solid rgba(24, 32, 42, 0.08);
-      border-radius: 30px;
-      background: rgba(250, 248, 244, 0.95);
-      box-shadow: 0 28px 80px rgba(24, 32, 42, 0.16);
-      backdrop-filter: blur(22px);
-      transform: translateX(-50%);
-      pointer-events: auto;
-    }
-
-    .mobile-menu-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      padding-bottom: 0.2rem;
-    }
-
-    .mobile-menu-label {
-      color: var(--color-muted);
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-    }
-
-    .mobile-close {
-      position: relative;
-      width: 2.5rem;
-      height: 2.5rem;
-      border: 1px solid var(--color-border);
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.7);
-      cursor: pointer;
-    }
-
-    .mobile-close span {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 1rem;
-      height: 1px;
-      background: var(--color-text);
-    }
-
-    .mobile-close span:first-child {
-      transform: translate(-50%, -50%) rotate(45deg);
-    }
-
-    .mobile-close span:last-child {
-      transform: translate(-50%, -50%) rotate(-45deg);
-    }
-
-    .mobile-links {
-      display: grid;
-      gap: 0.35rem;
-    }
-
-    .mobile-link {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      min-height: 3.5rem;
-      padding: 0.95rem 1rem;
-      border-radius: 20px;
-      color: var(--color-text);
-      background: rgba(255, 255, 255, 0.66);
-      transition:
-        background 180ms ease,
-        transform 180ms ease;
-    }
-
-    .mobile-link.is-active {
-      background: rgba(198, 204, 214, 0.34);
-    }
-
-    .mobile-link:hover,
-    .mobile-link:focus-visible {
-      transform: translateY(-1px);
-      background: rgba(255, 255, 255, 0.9);
-    }
-
-    .mobile-link span {
-      font-size: 1rem;
-      font-weight: 600;
-    }
-
-    .mobile-link svg,
-    .mobile-cta svg {
-      width: 1rem;
-      height: 1rem;
-      flex: 0 0 auto;
-    }
-
-    .mobile-cta {
-      width: 100%;
-      min-height: 3.5rem;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .header-inner {
-      min-height: 4.25rem;
-      padding-inline: 0.7rem;
-    }
-
-    .brand {
-      gap: 0.7rem;
-    }
-
-    .brand-mark {
-      width: 2.5rem;
-      height: 2.5rem;
-    }
-
-    .mobile-menu {
-      top: calc(0.75rem + 4.9rem);
-      width: calc(100vw - 1rem);
-      border-radius: 26px;
-      padding: 1rem;
-    }
-  }
-</style>

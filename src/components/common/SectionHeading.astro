@@ -7,27 +7,14 @@ interface Props {
 }
 
 const { eyebrow, title, copy, align = "left" } = Astro.props;
+const centered = align === "center";
 ---
 
-<div class={`section-heading section-heading--${align}`} data-reveal>
-  <span class="eyebrow">{eyebrow}</span>
+<div class:list={["mb-10 grid gap-4", centered && "justify-items-center text-center"]} data-reveal>
+  <span class="eyebrow">
+    <span class="eyebrow-line"></span>
+    {eyebrow}
+  </span>
   <h2 class="section-title">{title}</h2>
-  <p class="section-copy">{copy}</p>
+  <p class:list={["body-copy max-w-[62ch]", centered && "max-w-[54ch]"]}>{copy}</p>
 </div>
-
-<style>
-  .section-heading {
-    display: grid;
-    gap: 1rem;
-    margin-bottom: 2.5rem;
-  }
-
-  .section-heading--center {
-    justify-items: center;
-    text-align: center;
-  }
-
-  .section-heading--center .section-copy {
-    max-width: 54ch;
-  }
-</style>

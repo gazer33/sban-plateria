@@ -2,25 +2,33 @@
 import ButtonLink from "@/components/common/ButtonLink.astro";
 ---
 
-<section class="hero section">
-  <div class="container hero-grid">
-    <div class="hero-copy" data-reveal>
-      <span class="eyebrow">Platería contemporánea</span>
+<section class="section-space pt-9">
+  <div class="app-container grid items-center gap-6 lg:grid-cols-[minmax(0,1.08fr)_minmax(20rem,0.92fr)]">
+    <div class="grid gap-6 py-2 md:py-6" data-reveal>
+      <span class="eyebrow">
+        <span class="eyebrow-line"></span>
+        Plateria contemporanea
+      </span>
       <h1 class="display-title">Plata artesanal con presencia serena y detalle impecable.</h1>
-      <p class="lead">
-        En SBAN Platería diseñamos piezas de plata que combinan oficio, pureza visual y una sensibilidad
-        moderna para acompañar momentos que merecen permanecer.
+      <p class="body-copy max-w-[62ch]">
+        En SBAN Plateria diseniamos piezas de plata que combinan oficio, pureza visual y una sensibilidad
+        moderna para acompaniar momentos que merecen permanecer.
       </p>
-      <div class="hero-actions">
-        <ButtonLink href="/productos" label="Explorar colección" variant="primary" />
-        <ButtonLink href="/contacto" label="Solicitar atención personalizada" />
+      <div class="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+        <ButtonLink href="/productos" label="Explorar coleccion" variant="primary" />
+        <ButtonLink href="/contacto" label="Solicitar atencion personalizada" />
       </div>
     </div>
 
-    <div class="hero-visual card-surface" data-reveal data-parallax>
-      <div class="hero-orbit hero-orbit--large"></div>
-      <div class="hero-orbit hero-orbit--small"></div>
-      <div class="hero-object">
+    <div
+      class="glass-panel relative isolate min-h-[29rem] overflow-hidden bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.95),transparent_38%),linear-gradient(180deg,rgba(255,255,255,0.95),rgba(231,235,240,0.85))] p-6 sm:min-h-[33rem] md:p-8 lg:min-h-[42rem]"
+      data-reveal
+      data-parallax
+    >
+      <div class="absolute inset-[10%_8%] rounded-full border border-ink/7"></div>
+      <div class="absolute inset-[22%_18%] rounded-full border border-ink/7"></div>
+
+      <div class="absolute inset-[10%_10%_16%] grid place-items-center md:inset-[14%_16%_12%]">
         <svg viewBox="0 0 400 420" aria-hidden="true">
           <defs>
             <linearGradient id="silverGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -45,107 +53,11 @@ import ButtonLink from "@/components/common/ButtonLink.astro";
           ></path>
         </svg>
       </div>
-      <div class="hero-badge">
-        <strong>925</strong>
-        <span>Plata fina trabajada a mano</span>
+
+      <div class="absolute bottom-6 right-6 grid max-w-48 gap-1 rounded-3xl border border-white/70 bg-white/75 px-4 py-4 backdrop-blur-md">
+        <strong class="font-display text-[2rem] leading-none">925</strong>
+        <span class="text-sm leading-6 text-muted">Plata fina trabajada a mano</span>
       </div>
     </div>
   </div>
 </section>
-
-<style>
-  .hero {
-    padding-top: 2.25rem;
-  }
-
-  .hero-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
-    gap: 1.5rem;
-    align-items: center;
-  }
-
-  .hero-copy {
-    display: grid;
-    gap: 1.4rem;
-    padding: 2rem 0;
-  }
-
-  .hero-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.9rem;
-    margin-top: 0.4rem;
-  }
-
-  .hero-visual {
-    position: relative;
-    min-height: 42rem;
-    padding: 2rem;
-    overflow: hidden;
-    isolation: isolate;
-    background:
-      radial-gradient(circle at top, rgba(255, 255, 255, 0.95), transparent 38%),
-      linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(231, 235, 240, 0.85));
-  }
-
-  .hero-orbit {
-    position: absolute;
-    border-radius: 50%;
-    border: 1px solid rgba(24, 32, 42, 0.07);
-  }
-
-  .hero-orbit--large {
-    inset: 10% 8%;
-  }
-
-  .hero-orbit--small {
-    inset: 22% 18%;
-  }
-
-  .hero-object {
-    position: absolute;
-    inset: 14% 16% 12%;
-    display: grid;
-    place-items: center;
-  }
-
-  .hero-badge {
-    position: absolute;
-    right: 1.5rem;
-    bottom: 1.5rem;
-    display: grid;
-    gap: 0.3rem;
-    max-width: 12rem;
-    padding: 1rem 1.1rem;
-    border: 1px solid rgba(255, 255, 255, 0.72);
-    border-radius: 22px;
-    background: rgba(255, 255, 255, 0.72);
-    backdrop-filter: blur(14px);
-  }
-
-  .hero-badge strong {
-    font-family: var(--font-display);
-    font-size: 2rem;
-    line-height: 1;
-  }
-
-  .hero-badge span {
-    color: var(--color-muted);
-    line-height: 1.5;
-  }
-
-  @media (max-width: 900px) {
-    .hero-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .hero-visual {
-      min-height: 29rem;
-    }
-
-    .hero-object {
-      inset: 10% 10% 16%;
-    }
-  }
-</style>

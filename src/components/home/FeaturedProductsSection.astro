@@ -3,18 +3,18 @@ import SectionHeading from "@/components/common/SectionHeading.astro";
 import { featuredProducts } from "@/data/site";
 ---
 
-<section class="section">
-  <div class="container">
+<section class="section-space">
+  <div class="app-container">
     <SectionHeading
-      eyebrow="Selección curada"
+      eyebrow="Seleccion curada"
       title="Piezas destacadas que expresan presencia, textura y luz."
-      copy="Una muestra inicial de la propuesta SBAN: plata hecha a mano con una lectura contemporánea y acabados de alto nivel."
+      copy="Una muestra inicial de la propuesta SBAN: plata hecha a mano con una lectura contemporanea y acabados de alto nivel."
     />
 
-    <div class="featured-grid">
+    <div class="grid gap-5 lg:grid-cols-3">
       {featuredProducts.map((item, index) => (
-        <article class="featured-card card-surface" data-reveal style={`--delay: ${index * 0.08}s`}>
-          <div class="featured-visual" aria-hidden="true">
+        <article class="glass-panel grid gap-4 p-5 md:p-6" data-reveal style={`--delay: ${index * 0.08}s`}>
+          <div class="rounded-[1.5rem] bg-linear-to-b from-white/70 to-[#d8dee5]/75 p-3" aria-hidden="true">
             <svg viewBox="0 0 320 260">
               <defs>
                 <linearGradient id={`metal-${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
@@ -27,64 +27,13 @@ import { featuredProducts } from "@/data/site";
               <circle cx="160" cy="130" r={index === 0 ? 54 : index === 1 ? 42 : 60} fill="none" stroke="rgba(255,255,255,.9)" stroke-width="8"></circle>
             </svg>
           </div>
-          <span class="featured-tag">{item.tag}</span>
-          <h3>{item.title}</h3>
-          <p>{item.description}</p>
+          <span class="inline-flex w-fit rounded-full bg-white/80 px-3 py-1.5 text-[0.76rem] font-bold uppercase tracking-[0.08em] text-muted">
+            {item.tag}
+          </span>
+          <h3 class="text-[1.2rem] font-semibold">{item.title}</h3>
+          <p class="body-copy">{item.description}</p>
         </article>
       ))}
     </div>
   </div>
 </section>
-
-<style>
-  .featured-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1.25rem;
-  }
-
-  .featured-card {
-    display: grid;
-    gap: 1rem;
-    padding: 1.35rem;
-  }
-
-  .featured-visual {
-    padding: 0.65rem;
-    border-radius: 24px;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(216, 222, 229, 0.75));
-  }
-
-  .featured-tag {
-    display: inline-flex;
-    width: fit-content;
-    padding: 0.35rem 0.7rem;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.78);
-    color: var(--color-muted);
-    font-size: 0.76rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
-  h3,
-  p {
-    margin: 0;
-  }
-
-  h3 {
-    font-size: 1.2rem;
-  }
-
-  p {
-    color: var(--color-muted);
-    line-height: 1.75;
-  }
-
-  @media (max-width: 900px) {
-    .featured-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-</style>
