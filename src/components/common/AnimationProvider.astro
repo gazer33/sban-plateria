@@ -1,0 +1,49 @@
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (!prefersReducedMotion) {
+    gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((element) => {
+      gsap.fromTo(
+        element,
+        { autoAlpha: 0, y: 32 },
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.9,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: element,
+            start: "top 82%"
+          }
+        }
+      );
+    });
+
+    gsap.utils.toArray<HTMLElement>("[data-parallax]").forEach((element) => {
+      gsap.to(element, {
+        yPercent: -10,
+        ease: "none",
+        scrollTrigger: {
+          trigger: element,
+          scrub: 1.1
+        }
+      });
+    });
+
+    const header = document.querySelector("[data-header]");
+
+    if (header) {
+      ScrollTrigger.create({
+        start: 20,
+        onUpdate: ({ scroll }) => {
+          header.toggleAttribute("data-scrolled", scroll() > 24);
+        }
+      });
+    }
+  }
+</script>

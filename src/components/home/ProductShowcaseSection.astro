@@ -1,0 +1,103 @@
+---
+import SectionHeading from "@/components/common/SectionHeading.astro";
+import { productPreview } from "@/data/site";
+---
+
+<section class="section">
+  <div class="container showcase-grid">
+    <div>
+      <SectionHeading
+        eyebrow="Vista previa"
+        title="Una cuadrícula pensada para crecer con futuras colecciones."
+        copy="La base visual del catálogo ya está preparada para escalar con nuevas líneas, filtros y páginas de detalle sin romper la consistencia del sistema."
+      />
+    </div>
+
+    <div class="products-grid">
+      {productPreview.map((product, index) => (
+        <article class="product-card" data-reveal>
+          <div class="product-thumb" aria-hidden="true">
+            <svg viewBox="0 0 260 220">
+              <defs>
+                <linearGradient id={`piece-${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#ffffff"></stop>
+                  <stop offset="100%" stop-color="#c3cbd4"></stop>
+                </linearGradient>
+              </defs>
+              <rect x="18" y="18" width="224" height="184" rx="34" fill={`url(#piece-${index})`}></rect>
+              <path
+                d={index % 2 === 0 ? "M78 110c0-28 23-50 52-50s52 22 52 50-23 50-52 50-52-22-52-50Z" : "M84 67h92v86H84z"}
+                fill="none"
+                stroke="rgba(255,255,255,.9)"
+                stroke-width="8"
+              ></path>
+            </svg>
+          </div>
+          <div class="product-meta">
+            <span>{product.category}</span>
+            <strong>{product.name}</strong>
+            <p>{product.price}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .showcase-grid {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .product-card {
+    padding: 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: 26px;
+    background: rgba(255, 255, 255, 0.74);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .product-thumb {
+    margin-bottom: 1rem;
+    border-radius: 22px;
+    overflow: hidden;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(230, 235, 241, 0.85));
+  }
+
+  .product-meta span,
+  .product-meta p {
+    color: var(--color-muted);
+  }
+
+  .product-meta span,
+  .product-meta strong,
+  .product-meta p {
+    display: block;
+  }
+
+  .product-meta strong {
+    margin: 0.45rem 0 0.35rem;
+    font-size: 1.15rem;
+  }
+
+  .product-meta p {
+    margin: 0;
+    font-weight: 700;
+  }
+
+  @media (max-width: 900px) {
+    .showcase-grid,
+    .products-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

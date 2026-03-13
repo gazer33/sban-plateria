@@ -1,0 +1,75 @@
+---
+import SectionHeading from "@/components/common/SectionHeading.astro";
+---
+
+<section class="section">
+  <div class="container intro-grid">
+    <div class="intro-copy">
+      <SectionHeading
+        eyebrow="Esencia de la marca"
+        title="Una firma que traduce la tradición platera en piezas sobrias y actuales."
+        copy="SBAN Platería nace del deseo de crear objetos de plata con identidad refinada, pensados para destacar por su equilibrio, su materia y el valor del trabajo manual."
+      />
+    </div>
+
+    <div class="intro-panel card-surface" data-reveal>
+      <p>
+        Cada colección parte de una observación simple: la elegancia no necesita exceso. Por eso diseñamos con
+        proporciones limpias, acabados delicados y procesos artesanales que respetan el carácter de cada pieza.
+      </p>
+      <div class="intro-stats">
+        <div>
+          <strong>+120</strong>
+          <span>Piezas creadas en talleres locales</span>
+        </div>
+        <div>
+          <strong>100%</strong>
+          <span>Enfoque en diseño y manufactura artesanal</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .intro-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 1.5rem;
+    align-items: end;
+  }
+
+  .intro-panel {
+    display: grid;
+    gap: 2rem;
+    padding: 2rem;
+  }
+
+  .intro-panel p,
+  .intro-stats span {
+    margin: 0;
+    color: var(--color-muted);
+    line-height: 1.8;
+  }
+
+  .intro-stats {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .intro-stats strong {
+    display: block;
+    margin-bottom: 0.35rem;
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    line-height: 1;
+  }
+
+  @media (max-width: 900px) {
+    .intro-grid,
+    .intro-stats {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

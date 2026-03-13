@@ -1,0 +1,55 @@
+---
+import ButtonLink from "@/components/common/ButtonLink.astro";
+---
+
+<section class="section">
+  <div class="container">
+    <div class="cta-panel card-surface" data-reveal>
+      <div class="cta-copy">
+        <span class="eyebrow">Siguiente paso</span>
+        <h2 class="section-title">Descubre una pieza que se sienta propia desde el primer vistazo.</h2>
+        <p class="section-copy">
+          Conversemos sobre disponibilidad, personalización o selección de regalo. SBAN Platería está listo para
+          acompañarte con una experiencia cercana y cuidada.
+        </p>
+      </div>
+      <div class="cta-actions">
+        <ButtonLink href="/contacto" label="Hablar con la marca" variant="primary" />
+        <ButtonLink href="/nosotros" label="Conocer la historia" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-panel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 2rem;
+  }
+
+  .cta-copy {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+    justify-content: flex-end;
+  }
+
+  @media (max-width: 900px) {
+    .cta-panel {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .cta-actions {
+      justify-content: flex-start;
+    }
+  }
+</style>

@@ -1,0 +1,151 @@
+---
+import ButtonLink from "@/components/common/ButtonLink.astro";
+---
+
+<section class="hero section">
+  <div class="container hero-grid">
+    <div class="hero-copy" data-reveal>
+      <span class="eyebrow">Platería contemporánea</span>
+      <h1 class="display-title">Plata artesanal con presencia serena y detalle impecable.</h1>
+      <p class="lead">
+        En SBAN Platería diseñamos piezas de plata que combinan oficio, pureza visual y una sensibilidad
+        moderna para acompañar momentos que merecen permanecer.
+      </p>
+      <div class="hero-actions">
+        <ButtonLink href="/productos" label="Explorar colección" variant="primary" />
+        <ButtonLink href="/contacto" label="Solicitar atención personalizada" />
+      </div>
+    </div>
+
+    <div class="hero-visual card-surface" data-reveal data-parallax>
+      <div class="hero-orbit hero-orbit--large"></div>
+      <div class="hero-orbit hero-orbit--small"></div>
+      <div class="hero-object">
+        <svg viewBox="0 0 400 420" aria-hidden="true">
+          <defs>
+            <linearGradient id="silverGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#f6f7f8"></stop>
+              <stop offset="40%" stop-color="#b9c0ca"></stop>
+              <stop offset="70%" stop-color="#eef1f5"></stop>
+              <stop offset="100%" stop-color="#8f98a4"></stop>
+            </linearGradient>
+          </defs>
+          <path
+            d="M200 40c60 0 110 38 110 104 0 34-15 59-35 86-15 20-25 39-25 64 0 41-24 86-50 86s-50-45-50-86c0-25-10-44-25-64-20-27-35-52-35-86 0-66 50-104 110-104Z"
+            fill="url(#silverGradient)"
+            stroke="rgba(255,255,255,.9)"
+            stroke-width="6"
+          ></path>
+          <path
+            d="M145 172c17-19 35-30 55-30 29 0 48 16 70 45"
+            fill="none"
+            stroke="rgba(255,255,255,.8)"
+            stroke-linecap="round"
+            stroke-width="7"
+          ></path>
+        </svg>
+      </div>
+      <div class="hero-badge">
+        <strong>925</strong>
+        <span>Plata fina trabajada a mano</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding-top: 2.25rem;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .hero-copy {
+    display: grid;
+    gap: 1.4rem;
+    padding: 2rem 0;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    margin-top: 0.4rem;
+  }
+
+  .hero-visual {
+    position: relative;
+    min-height: 42rem;
+    padding: 2rem;
+    overflow: hidden;
+    isolation: isolate;
+    background:
+      radial-gradient(circle at top, rgba(255, 255, 255, 0.95), transparent 38%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(231, 235, 240, 0.85));
+  }
+
+  .hero-orbit {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(24, 32, 42, 0.07);
+  }
+
+  .hero-orbit--large {
+    inset: 10% 8%;
+  }
+
+  .hero-orbit--small {
+    inset: 22% 18%;
+  }
+
+  .hero-object {
+    position: absolute;
+    inset: 14% 16% 12%;
+    display: grid;
+    place-items: center;
+  }
+
+  .hero-badge {
+    position: absolute;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    display: grid;
+    gap: 0.3rem;
+    max-width: 12rem;
+    padding: 1rem 1.1rem;
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(14px);
+  }
+
+  .hero-badge strong {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    line-height: 1;
+  }
+
+  .hero-badge span {
+    color: var(--color-muted);
+    line-height: 1.5;
+  }
+
+  @media (max-width: 900px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-visual {
+      min-height: 29rem;
+    }
+
+    .hero-object {
+      inset: 10% 10% 16%;
+    }
+  }
+</style>

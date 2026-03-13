@@ -1,0 +1,55 @@
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div>
+      <p class="eyebrow">SBAN Platería</p>
+      <p class="footer-copy">
+        Plata hecha a mano para quienes valoran diseño, detalle y permanencia.
+      </p>
+    </div>
+    <div class="footer-meta">
+      <a href="mailto:hola@sbanplateria.com">hola@sbanplateria.com</a>
+      <span>Ciudad de México, México</span>
+      <span>© 2026 SBAN Platería</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    padding: 2rem 0 3rem;
+  }
+
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 1.75rem 2rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(16px);
+  }
+
+  .footer-copy,
+  .footer-meta {
+    margin: 0;
+    color: var(--color-muted);
+    line-height: 1.8;
+  }
+
+  .footer-meta {
+    display: grid;
+    justify-items: end;
+  }
+
+  @media (max-width: 720px) {
+    .footer-inner {
+      flex-direction: column;
+      padding: 1.5rem;
+    }
+
+    .footer-meta {
+      justify-items: start;
+    }
+  }
+</style>
