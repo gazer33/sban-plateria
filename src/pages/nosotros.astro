@@ -1,17 +1,21 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
+import AboutHeroSection from "@/components/about/AboutHeroSection.astro";
+import BrandStorySection from "@/components/about/BrandStorySection.astro";
+import HighlightsSection from "@/components/about/HighlightsSection.astro";
+import ProcessSection from "@/components/about/ProcessSection.astro";
+import StudioSection from "@/components/about/StudioSection.astro";
+import AboutCtaSection from "@/components/about/AboutCtaSection.astro";
 ---
 
-<MainLayout title="Nosotros | SBAN Plateria" description="Pagina en construccion.">
-  <section class="section-space">
-    <div class="app-container">
-      <div class="glass-panel p-8 md:p-12" data-reveal>
-        <span class="eyebrow">
-          <span class="eyebrow-line"></span>
-          Proximamente
-        </span>
-        <h1 class="section-title mt-4">La pagina de Nosotros se desarrollara en la siguiente fase.</h1>
-      </div>
-    </div>
-  </section>
+<MainLayout
+  title="Nosotros | SBAN Plateria"
+  description="Conoce la historia, filosofia y proceso artesanal detras de SBAN Plateria."
+>
+  <AboutHeroSection />
+  <BrandStorySection />
+  <HighlightsSection />
+  <ProcessSection />
+  <StudioSection />
+  <AboutCtaSection />
 </MainLayout>

@@ -60,3 +60,56 @@ export const values = [
     description: "Creamos objetos que trascienden tendencias y acompañan momentos significativos."
   }
 ];
+
+export const aboutHighlights = [
+  {
+    title: "Origen consciente",
+    description: "SBAN Plateria surge de una busqueda por crear piezas honestas, refinadas y con una presencia serena."
+  },
+  {
+    title: "Oficio visible",
+    description: "Valoramos el trabajo manual, las texturas reales y el tiempo necesario para que cada detalle quede resuelto."
+  },
+  {
+    title: "Vision contemporanea",
+    description: "Nuestra estetica combina lineas limpias, proporciones equilibradas y una lectura actual de la plateria."
+  }
+];
+
+export const aboutProcess = [
+  {
+    step: "01",
+    title: "Concepto",
+    description: "Cada pieza inicia con una idea funcional y atemporal, pensada para convivir con el uso cotidiano."
+  },
+  {
+    step: "02",
+    title: "Modelado",
+    description: "Exploramos volumen, proporciones y detalles hasta encontrar una silueta sobria y precisa."
+  },
+  {
+    step: "03",
+    title: "Trabajo artesanal",
+    description: "La plata se corta, suelda, pule y afina a mano para conservar el caracter de su manufactura."
+  },
+  {
+    step: "04",
+    title: "Acabado final",
+    description: "Revisamos brillo, textura y balance visual para entregar una pieza lista para durar."
+  }
+];
+
+export const aboutStats = [
+  {
+    value: "925",
+    label: "Plata fina como base material"
+  },
+  {
+    value: "3",
+    label: "Principios que sostienen la marca"
+  },
+  {
+    value: "1",
+    label: "Lenguaje de diseno claro y consistente"
+  }
+];

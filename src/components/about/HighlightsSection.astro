@@ -1,0 +1,26 @@
+---
+import SectionHeading from "@/components/common/SectionHeading.astro";
+import { aboutHighlights } from "@/data/site";
+---
+
+<section class="section-space">
+  <div class="app-container">
+    <SectionHeading
+      eyebrow="Lo que nos define"
+      title="Tres ideas que orientan cada decision de diseno y cada pieza que sale del taller."
+      copy="La marca se apoya en principios consistentes para mantener un lenguaje visual claro, una manufactura cuidadosa y una experiencia mas cercana."
+    />
+
+    <div class="grid gap-5 lg:grid-cols-3">
+      {aboutHighlights.map((item) => (
+        <article class="glass-panel p-6 md:p-7" data-reveal>
+          <span class="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/75 text-sm font-bold text-brand-strong">
+            SB
+          </span>
+          <h3 class="text-xl font-semibold">{item.title}</h3>
+          <p class="body-copy mt-4">{item.description}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

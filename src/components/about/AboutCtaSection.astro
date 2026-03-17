@@ -1,0 +1,26 @@
+---
+import ButtonLink from "@/components/common/ButtonLink.astro";
+---
+
+<section class="section-space">
+  <div class="app-container">
+    <div class="glass-panel flex flex-col gap-6 p-6 md:p-8 lg:flex-row lg:items-center lg:justify-between" data-reveal>
+      <div class="grid gap-4">
+        <span class="eyebrow">
+          <span class="eyebrow-line"></span>
+          Conversemos
+        </span>
+        <h2 class="section-title">Si conectas con esta forma de hacer, el siguiente paso es descubrir la coleccion.</h2>
+        <p class="body-copy max-w-[62ch]">
+          Podemos ayudarte a elegir una pieza, resolver dudas sobre materiales o mostrarte las lineas que mejor se
+          alinean con tu estilo.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-3 sm:flex-row sm:flex-wrap lg:justify-end">
+        <ButtonLink href="/productos" label="Ir a productos" variant="primary" />
+        <ButtonLink href="/contacto" label="Escribir a la marca" />
+      </div>
+    </div>
+  </div>
+</section>

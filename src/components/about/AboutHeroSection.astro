@@ -1,0 +1,57 @@
+---
+import ButtonLink from "@/components/common/ButtonLink.astro";
+import { aboutStats } from "@/data/site";
+---
+
+<section class="section-space pt-9">
+  <div class="app-container grid items-center gap-6 xl:grid-cols-[minmax(0,1.02fr)_minmax(22rem,0.98fr)]">
+    <div class="grid gap-6 py-2 md:py-6" data-reveal>
+      <span class="eyebrow">
+        <span class="eyebrow-line"></span>
+        Nosotros
+      </span>
+      <h1 class="display-title">La historia de una marca que entiende la plata como presencia, memoria y oficio.</h1>
+      <p class="body-copy max-w-[64ch]">
+        SBAN Plateria nace de una mirada contemporanea sobre la joyeria artesanal. Nos mueve crear piezas
+        sobrias, bien resueltas y con suficiente caracter para acompaniar historias personales durante mucho tiempo.
+      </p>
+      <div class="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+        <ButtonLink href="/productos" label="Ver coleccion" variant="primary" />
+        <ButtonLink href="/contacto" label="Hablar con la marca" />
+      </div>
+    </div>
+
+    <div class="glass-panel relative overflow-hidden p-5 sm:p-6 md:p-8" data-reveal>
+      <div class="absolute inset-x-[12%] top-8 h-px bg-gradient-to-r from-transparent via-brand-strong/70 to-transparent"></div>
+      <div class="absolute left-10 top-16 h-24 w-24 rounded-full border border-brand-strong/20"></div>
+      <div class="absolute bottom-12 right-8 h-36 w-36 rounded-full border border-brand-strong/15"></div>
+
+      <div class="relative rounded-[1.75rem] bg-white/70 p-6 backdrop-blur-md">
+        <svg class="mb-6 h-16 w-16 text-brand-strong" viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="32" cy="32" r="30" fill="none" stroke="currentColor" stroke-width="1.4"></circle>
+          <path d="M18 37c4-9 9-13 14-13 8 0 10 12 16 12 4 0 7-2 10-8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.4"></path>
+          <path d="M20 21h24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.4"></path>
+        </svg>
+
+        <div class="grid gap-4">
+          <h2 class="font-display text-3xl leading-none tracking-[-0.03em] sm:text-[2.4rem]">
+            Piezas que equilibran silencio visual y trabajo humano.
+          </h2>
+          <p class="body-copy">
+            Nuestro enfoque une tecnica, observacion y sensibilidad material para construir una identidad clara:
+            plata hecha con intencion, detalle y continuidad.
+          </p>
+        </div>
+      </div>
+
+      <div class="relative mt-5 grid gap-3 sm:grid-cols-3">
+        {aboutStats.map((item) => (
+          <div class="rounded-[1.5rem] border border-line bg-white/70 p-4 backdrop-blur-md">
+            <strong class="block font-display text-[2rem] leading-none">{item.value}</strong>
+            <span class="mt-2 block text-sm leading-6 text-muted">{item.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
