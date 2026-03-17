@@ -1,0 +1,200 @@
+---
+import SectionHeading from "@/components/common/SectionHeading.astro";
+import { productCatalog, productFilterGroups } from "@/data/site";
+---
+
+<section class="section-space">
+  <div class="app-container">
+    <SectionHeading
+      eyebrow="Catálogo"
+      title="Filtros claros y una cuadrícula modular para navegar la colección con calma."
+      copy="Usamos controles simples para conservar el tono refinado del sitio y facilitar una lectura más ordenada del catálogo."
+    />
+
+    <div class="grid gap-6 xl:grid-cols-[18rem_minmax(0,1fr)]">
+      <aside class="glass-panel h-fit p-5 md:p-6" data-reveal>
+        <div class="grid gap-5">
+          <div>
+            <p class="text-sm font-bold uppercase tracking-[0.16em] text-muted">Filtrar y ordenar</p>
+            <p class="mt-2 text-sm leading-7 text-muted">
+              Estos dropdowns ya estructuran el catálogo para una futura tienda más completa.
+            </p>
+          </div>
+
+          <label class="grid gap-2 text-sm font-semibold text-ink">
+            Categoría
+            <select class="rounded-2xl border border-line bg-white/80 px-4 py-3 text-sm font-medium text-ink outline-none" data-filter-category>
+              {productFilterGroups.categories.map((item) => <option value={item}>{item}</option>)}
+            </select>
+          </label>
+
+          <label class="grid gap-2 text-sm font-semibold text-ink">
+            Colección
+            <select class="rounded-2xl border border-line bg-white/80 px-4 py-3 text-sm font-medium text-ink outline-none" data-filter-collection>
+              {productFilterGroups.collections.map((item) => <option value={item}>{item}</option>)}
+            </select>
+          </label>
+
+          <label class="grid gap-2 text-sm font-semibold text-ink">
+            Disponibilidad
+            <select class="rounded-2xl border border-line bg-white/80 px-4 py-3 text-sm font-medium text-ink outline-none" data-filter-availability>
+              {productFilterGroups.availability.map((item) => <option value={item}>{item}</option>)}
+            </select>
+          </label>
+
+          <label class="grid gap-2 text-sm font-semibold text-ink">
+            Ordenar por
+            <select class="rounded-2xl border border-line bg-white/80 px-4 py-3 text-sm font-medium text-ink outline-none" data-filter-sort>
+              {productFilterGroups.sort.map((item) => <option value={item}>{item}</option>)}
+            </select>
+          </label>
+
+          <div class="rounded-[1.25rem] bg-white/70 p-4 text-sm leading-7 text-muted">
+            <strong class="mb-1 block text-ink">Nota</strong>
+            La colección mantiene un formato curado: pocas piezas, mejor lectura visual y base lista para escalar.
+          </div>
+        </div>
+      </aside>
+
+      <div class="grid gap-4 sm:grid-cols-2 2xl:grid-cols-3" data-catalog-grid>
+        {productCatalog.map((product, index) => (
+          <article
+            class="rounded-[1.75rem] border border-line bg-white/75 p-4 shadow-[var(--shadow-float)]"
+            data-product-card
+            data-category={product.category}
+            data-collection={product.collection}
+            data-availability={product.availability}
+            data-price={product.price.replace(/[^0-9]/g, "")}
+            data-name={product.name}
+            data-index={index}
+            data-reveal
+          >
+            <div class="mb-4 overflow-hidden rounded-[1.5rem] bg-linear-to-b from-white/80 to-[#e2e8ee]/88" aria-hidden="true">
+              <svg viewBox="0 0 280 240">
+                <defs>
+                  <linearGradient id={`catalog-${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#ffffff"></stop>
+                    <stop offset="100%" stop-color="#c4ccd5"></stop>
+                  </linearGradient>
+                </defs>
+                <rect x="22" y="22" width="236" height="196" rx="36" fill={`url(#catalog-${index})`}></rect>
+                <path
+                  d={index % 4 === 0
+                    ? "M90 120c0-28 22-50 50-50s50 22 50 50-22 50-50 50-50-22-50-50Z"
+                    : index % 4 === 1
+                      ? "M95 78h90v84H95z"
+                      : index % 4 === 2
+                        ? "M108 76c18 0 32 16 32 36s-14 36-32 36-32-16-32-36 14-36 32-36Zm70 0c18 0 32 16 32 36s-14 36-32 36-32-16-32-36 14-36 32-36Z"
+                        : "M88 154c20-44 44-66 72-66 37 0 52 35 88 35"}
+                  fill="none"
+                  stroke="rgba(255,255,255,.9)"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="8"
+                ></path>
+              </svg>
+            </div>
+
+            <div class="flex items-start justify-between gap-3">
+              <div>
+                <span class="text-sm text-muted">{product.category}</span>
+                <h3 class="mt-1 text-[1.15rem] font-semibold">{product.name}</h3>
+              </div>
+              <span class="inline-flex rounded-full bg-brand-soft/30 px-3 py-1 text-[0.72rem] font-bold uppercase tracking-[0.08em] text-muted">
+                {product.badge}
+              </span>
+            </div>
+
+            <div class="mt-4 grid gap-2 text-sm leading-7 text-muted">
+              <p>{product.description}</p>
+              <div class="grid gap-1 pt-1">
+                <span><strong class="text-ink">Colección:</strong> {product.collection}</span>
+                <span><strong class="text-ink">Acabado:</strong> {product.finish}</span>
+                <span><strong class="text-ink">Disponibilidad:</strong> {product.availability}</span>
+              </div>
+            </div>
+
+            <div class="mt-5 flex items-center justify-between gap-3 border-t border-line pt-4">
+              <strong class="font-display text-[1.7rem] leading-none">{product.price}</strong>
+              <a class="action-button px-4 py-3 text-sm" href="/contacto">Consultar</a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const categorySelect = document.querySelector("[data-filter-category]");
+  const collectionSelect = document.querySelector("[data-filter-collection]");
+  const availabilitySelect = document.querySelector("[data-filter-availability]");
+  const sortSelect = document.querySelector("[data-filter-sort]");
+  const grid = document.querySelector("[data-catalog-grid]");
+
+  if (
+    categorySelect instanceof HTMLSelectElement &&
+    collectionSelect instanceof HTMLSelectElement &&
+    availabilitySelect instanceof HTMLSelectElement &&
+    sortSelect instanceof HTMLSelectElement &&
+    grid instanceof HTMLElement
+  ) {
+    const cards = Array.from(grid.querySelectorAll("[data-product-card]"));
+
+    const applyFilters = () => {
+      const category = categorySelect.value;
+      const collection = collectionSelect.value;
+      const availability = availabilitySelect.value;
+      const sort = sortSelect.value;
+
+      const visibleCards = cards.filter((card) => {
+        if (!(card instanceof HTMLElement)) {
+          return false;
+        }
+
+        const matchesCategory = category === "Todos" || card.dataset.category === category;
+        const matchesCollection = collection === "Todas" || card.dataset.collection === collection;
+        const matchesAvailability = availability === "Todas" || card.dataset.availability === availability;
+        const isVisible = matchesCategory && matchesCollection && matchesAvailability;
+
+        card.style.display = isVisible ? "" : "none";
+        return isVisible;
+      });
+
+      visibleCards.sort((a, b) => {
+        if (!(a instanceof HTMLElement) || !(b instanceof HTMLElement)) {
+          return 0;
+        }
+
+        const priceA = Number(a.dataset.price ?? 0);
+        const priceB = Number(b.dataset.price ?? 0);
+        const nameA = a.dataset.name ?? "";
+        const nameB = b.dataset.name ?? "";
+        const indexA = Number(a.dataset.index ?? 0);
+        const indexB = Number(b.dataset.index ?? 0);
+
+        if (sort === "Precio menor") {
+          return priceA - priceB;
+        }
+
+        if (sort === "Precio mayor") {
+          return priceB - priceA;
+        }
+
+        if (sort === "Nombre A-Z") {
+          return nameA.localeCompare(nameB);
+        }
+
+        return indexA - indexB;
+      });
+
+      visibleCards.forEach((card) => grid.appendChild(card));
+    };
+
+    [categorySelect, collectionSelect, availabilitySelect, sortSelect].forEach((control) =>
+      control.addEventListener("change", applyFilters)
+    );
+
+    applyFilters();
+  }
+</script>

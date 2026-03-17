@@ -1,0 +1,71 @@
+---
+import ButtonLink from "@/components/common/ButtonLink.astro";
+---
+
+<section class="section-space pt-9">
+  <div class="app-container grid items-center gap-6 xl:grid-cols-[minmax(0,1.02fr)_minmax(22rem,0.98fr)]">
+    <div class="grid gap-6 py-2 md:py-6" data-reveal>
+      <span class="eyebrow">
+        <span class="eyebrow-line"></span>
+        Productos
+      </span>
+      <h1 class="display-title">Una cuadrícula pensada para mostrar plata artesanal con orden, claridad y presencia.</h1>
+      <p class="body-copy max-w-[64ch]">
+        Esta selección inicial reúne piezas clave de SBAN Platería. El sistema está preparado para crecer con nuevas
+        colecciones, filtros más avanzados y vistas de detalle sin perder la estética minimalista del sitio.
+      </p>
+      <div class="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+        <ButtonLink href="/contacto" label="Solicitar atención" variant="primary" />
+        <ButtonLink href="/nosotros" label="Conocer la marca" />
+      </div>
+    </div>
+
+    <div class="glass-panel relative overflow-hidden p-5 sm:p-6 md:p-8" data-reveal data-parallax>
+      <div class="absolute inset-[10%] rounded-[1.75rem] border border-ink/7"></div>
+      <div class="absolute left-[14%] top-[18%] h-28 w-28 rounded-full border border-brand-strong/15"></div>
+      <div class="absolute bottom-[12%] right-[12%] h-40 w-40 rounded-full border border-brand-strong/12"></div>
+
+      <div class="relative grid gap-4 rounded-[1.75rem] bg-white/72 p-5 backdrop-blur-md sm:grid-cols-2">
+        <div class="rounded-[1.5rem] bg-linear-to-b from-white to-[#d8e0e7] p-4">
+          <svg viewBox="0 0 260 220" aria-hidden="true">
+            <defs>
+              <linearGradient id="productBlockA" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#ffffff"></stop>
+                <stop offset="100%" stop-color="#bcc5cf"></stop>
+              </linearGradient>
+            </defs>
+            <rect x="18" y="18" width="224" height="184" rx="34" fill="url(#productBlockA)"></rect>
+            <circle cx="130" cy="110" r="48" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="8"></circle>
+          </svg>
+        </div>
+        <div class="rounded-[1.5rem] bg-linear-to-b from-white to-[#dfe5eb] p-4">
+          <svg viewBox="0 0 260 220" aria-hidden="true">
+            <defs>
+              <linearGradient id="productBlockB" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#ffffff"></stop>
+                <stop offset="100%" stop-color="#c4ccd5"></stop>
+              </linearGradient>
+            </defs>
+            <rect x="18" y="18" width="224" height="184" rx="34" fill="url(#productBlockB)"></rect>
+            <path d="M86 72h88v76H86z" fill="none" stroke="rgba(255,255,255,.88)" stroke-width="8"></path>
+          </svg>
+        </div>
+      </div>
+
+      <div class="relative mt-5 grid gap-3 sm:grid-cols-3">
+        <div class="rounded-[1.25rem] border border-line bg-white/75 px-4 py-4">
+          <strong class="block font-display text-[2rem] leading-none">08</strong>
+          <span class="mt-2 block text-sm leading-6 text-muted">Piezas iniciales en el catálogo</span>
+        </div>
+        <div class="rounded-[1.25rem] border border-line bg-white/75 px-4 py-4">
+          <strong class="block font-display text-[2rem] leading-none">04</strong>
+          <span class="mt-2 block text-sm leading-6 text-muted">Categorías para ordenar la colección</span>
+        </div>
+        <div class="rounded-[1.25rem] border border-line bg-white/75 px-4 py-4">
+          <strong class="block font-display text-[2rem] leading-none">01</strong>
+          <span class="mt-2 block text-sm leading-6 text-muted">Sistema preparado para crecer</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,26 @@
+---
+import ButtonLink from "@/components/common/ButtonLink.astro";
+---
+
+<section class="section-space">
+  <div class="app-container">
+    <div class="glass-panel flex flex-col gap-6 p-6 md:p-8 lg:flex-row lg:items-center lg:justify-between" data-reveal>
+      <div class="grid gap-4">
+        <span class="eyebrow">
+          <span class="eyebrow-line"></span>
+          Siguiente paso
+        </span>
+        <h2 class="section-title">Si una pieza te interesa, podemos ayudarte a revisar disponibilidad y opciones.</h2>
+        <p class="body-copy max-w-[62ch]">
+          Esta base ya permite presentar la colección con orden. El siguiente nivel puede incorporar detalles de
+          producto, categorías expandidas y una experiencia comercial más completa.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-3 sm:flex-row sm:flex-wrap lg:justify-end">
+        <ButtonLink href="/contacto" label="Solicitar informacion" variant="primary" />
+        <ButtonLink href="/nosotros" label="Volver a la historia" />
+      </div>
+    </div>
+  </div>
+</section>

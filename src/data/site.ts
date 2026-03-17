@@ -113,3 +113,108 @@ export const aboutStats = [
     label: "Lenguaje de diseno claro y consistente"
   }
 ];
+
+export const productCatalog = [
+  {
+    name: "Luz Serena",
+    category: "Anillos",
+    collection: "Escultorica",
+    finish: "Pulido espejo",
+    price: "$1,480 MXN",
+    availability: "Disponible",
+    badge: "Nuevo",
+    description: "Anillo de volumen suave con presencia limpia y acabado de alto brillo."
+  },
+  {
+    name: "Bruma",
+    category: "Aretes",
+    collection: "Linea diaria",
+    finish: "Satinado fino",
+    price: "$1,250 MXN",
+    availability: "Disponible",
+    badge: "Favorito",
+    description: "Aretes colgantes de lectura ligera pensados para uso cotidiano."
+  },
+  {
+    name: "Origen",
+    category: "Pulseras",
+    collection: "Texturas",
+    finish: "Martillado manual",
+    price: "$1,920 MXN",
+    availability: "Disponible",
+    badge: "Hecho a mano",
+    description: "Pulsera de caracter organico con marcas sutiles del trabajo manual."
+  },
+  {
+    name: "Reflejo",
+    category: "Collares",
+    collection: "Esenciales",
+    finish: "Pulido espejo",
+    price: "$2,140 MXN",
+    availability: "Disponible",
+    badge: "Coleccion base",
+    description: "Collar minimalista con una geometria contenida y elegante."
+  },
+  {
+    name: "Silente",
+    category: "Anillos",
+    collection: "Esenciales",
+    finish: "Satinado fino",
+    price: "$1,360 MXN",
+    availability: "Bajo pedido",
+    badge: "Bajo pedido",
+    description: "Anillo sobrio con perfil delgado para combinar o llevar por si solo."
+  },
+  {
+    name: "Trama",
+    category: "Pulseras",
+    collection: "Texturas",
+    finish: "Cepillado mate",
+    price: "$2,280 MXN",
+    availability: "Disponible",
+    badge: "Edicion especial",
+    description: "Pulsera estructurada con una textura lineal inspirada en el tejido manual."
+  },
+  {
+    name: "Ladera",
+    category: "Aretes",
+    collection: "Escultorica",
+    finish: "Pulido espejo",
+    price: "$1,740 MXN",
+    availability: "Bajo pedido",
+    badge: "Edicion corta",
+    description: "Aretes con caida precisa y una silueta curva de apariencia escultorica."
+  },
+  {
+    name: "Umbral",
+    category: "Collares",
+    collection: "Linea diaria",
+    finish: "Cepillado mate",
+    price: "$1,980 MXN",
+    availability: "Disponible",
+    badge: "Uso diario",
+    description: "Collar versatil con una placa ligera y presencia serena."
+  }
+];
+
+export const productFilterGroups = {
+  categories: ["Todos", "Anillos", "Aretes", "Pulseras", "Collares"],
+  collections: ["Todas", "Escultorica", "Esenciales", "Linea diaria", "Texturas"],
+  availability: ["Todas", "Disponible", "Bajo pedido"],
+  sort: ["Destacados", "Precio menor", "Precio mayor", "Nombre A-Z"]
+};
+
+export const productNotes = [
+  {
+    title: "Colecciones en crecimiento",
+    description: "La cuadrícula esta preparada para recibir nuevas lineas, variaciones y futuras paginas de detalle."
+  },
+  {
+    title: "Disponibilidad clara",
+    description: "Mostramos piezas disponibles y tambien modelos bajo pedido para mantener una lectura mas precisa."
+  },
+  {
+    title: "Sistema reusable",
+    description: "Este bloque puede evolucionar a filtros reales de tienda sin rehacer la estructura visual."
+  }
+];

@@ -1,0 +1,23 @@
+---
+import SectionHeading from "@/components/common/SectionHeading.astro";
+import { productNotes } from "@/data/site";
+---
+
+<section class="section-space">
+  <div class="app-container">
+    <SectionHeading
+      eyebrow="Sistema de catálogo"
+      title="La página ya responde a una estructura más formal sin perder ligereza visual."
+      copy="Combinamos controles discretos, espaciado limpio y tarjetas bien ordenadas para que el producto tenga el protagonismo."
+    />
+
+    <div class="grid gap-5 lg:grid-cols-3">
+      {productNotes.map((item) => (
+        <article class="glass-panel p-6 md:p-7" data-reveal>
+          <h3 class="text-xl font-semibold">{item.title}</h3>
+          <p class="body-copy mt-4">{item.description}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
