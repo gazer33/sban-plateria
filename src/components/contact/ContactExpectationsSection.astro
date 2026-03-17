@@ -1,0 +1,23 @@
+---
+import SectionHeading from "@/components/common/SectionHeading.astro";
+import { contactExpectations } from "@/data/site";
+---
+
+<section class="section-space">
+  <div class="app-container">
+    <SectionHeading
+      eyebrow="Que puedes esperar"
+      title="El contacto con la marca sigue el mismo criterio que el resto del sitio: claridad, orden y atencion personal."
+      copy="La idea es que escribirnos se sienta tan cuidado como explorar la coleccion. Estas son las bases del flujo que queremos mantener."
+    />
+
+    <div class="grid gap-5 lg:grid-cols-3">
+      {contactExpectations.map((item) => (
+        <article class="glass-panel p-6 md:p-7" data-reveal>
+          <h3 class="text-xl font-semibold">{item.title}</h3>
+          <p class="body-copy mt-4">{item.description}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

@@ -9,16 +9,16 @@ export const featuredProducts = [
   {
     title: "Anillos de plata fina",
     description: "Piezas pulidas a mano con siluetas sobrias y acabados de alto brillo.",
-    tag: "Colección destacada"
+    tag: "Coleccion destacada"
   },
   {
     title: "Collares artesanales",
-    description: "Diseños pensados para elevar looks cotidianos con un acento refinado.",
-    tag: "Edición especial"
+    description: "Disenos pensados para elevar looks cotidianos con un acento refinado.",
+    tag: "Edicion especial"
   },
   {
     title: "Pulseras con textura",
-    description: "Detalles orgánicos que celebran la nobleza de la plata trabajada.",
+    description: "Detalles organicos que celebran la nobleza de la plata trabajada.",
     tag: "Hecho a mano"
   }
 ];
@@ -26,7 +26,7 @@ export const featuredProducts = [
 export const productPreview = [
   {
     name: "Luz Serena",
-    category: "Anillo escultórico",
+    category: "Anillo escultorico",
     price: "$1,480 MXN"
   },
   {
@@ -52,12 +52,12 @@ export const values = [
     description: "Trabajamos plata con acabados precisos para resaltar su brillo natural y su durabilidad."
   },
   {
-    title: "Hecho con intención",
-    description: "Cada pieza se desarrolla con ritmo artesanal, atención al detalle y una visión contemporánea."
+    title: "Hecho con intencion",
+    description: "Cada pieza se desarrolla con ritmo artesanal, atencion al detalle y una vision contemporanea."
   },
   {
-    title: "Diseño atemporal",
-    description: "Creamos objetos que trascienden tendencias y acompañan momentos significativos."
+    title: "Diseno atemporal",
+    description: "Creamos objetos que trascienden tendencias y acompanan momentos significativos."
   }
 ];
 
@@ -207,7 +207,7 @@ export const productFilterGroups = {
 export const productNotes = [
   {
     title: "Colecciones en crecimiento",
-    description: "La cuadrícula esta preparada para recibir nuevas lineas, variaciones y futuras paginas de detalle."
+    description: "La cuadricula esta preparada para recibir nuevas lineas, variaciones y futuras paginas de detalle."
   },
   {
     title: "Disponibilidad clara",
@@ -216,5 +216,49 @@ export const productNotes = [
   {
     title: "Sistema reusable",
     description: "Este bloque puede evolucionar a filtros reales de tienda sin rehacer la estructura visual."
+  }
+];
+
+export const contactMethods = [
+  {
+    label: "Correo",
+    value: "hola@sbanplateria.com",
+    href: "mailto:hola@sbanplateria.com",
+    description: "Para consultas generales, pedidos y seguimiento personalizado."
+  },
+  {
+    label: "WhatsApp",
+    value: "+52 55 0000 0000",
+    href: "https://wa.me/525500000000",
+    description: "Ideal para disponibilidad, tiempos y recomendaciones mas directas."
+  },
+  {
+    label: "Ubicacion",
+    value: "Ciudad de Mexico, Mexico",
+    href: "#",
+    description: "Atencion remota y coordinacion personalizada segun cada solicitud."
+  }
+];
+
+export const contactTopics = [
+  "Consulta general",
+  "Disponibilidad de pieza",
+  "Pedido personalizado",
+  "Regalo o seleccion guiada",
+  "Colaboracion"
+];
+
+export const contactExpectations = [
+  {
+    title: "Respuesta cercana",
+    description: "Buscamos responder con claridad y contexto para que elegir una pieza sea una experiencia sencilla."
+  },
+  {
+    title: "Orientacion personalizada",
+    description: "Podemos sugerir opciones de coleccion, acabados y disponibilidad segun lo que estes buscando."
+  },
+  {
+    title: "Proceso ordenado",
+    description: "Cada consulta sigue un flujo claro: contacto, recomendacion, confirmacion y seguimiento."
   }
 ];

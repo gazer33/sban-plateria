@@ -1,17 +1,17 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
+import ContactHeroSection from "@/components/contact/ContactHeroSection.astro";
+import ContactFormSection from "@/components/contact/ContactFormSection.astro";
+import ContactExpectationsSection from "@/components/contact/ContactExpectationsSection.astro";
+import ContactCtaSection from "@/components/contact/ContactCtaSection.astro";
 ---
 
-<MainLayout title="Contacto | SBAN Plateria" description="Pagina en construccion.">
-  <section class="section-space">
-    <div class="app-container">
-      <div class="glass-panel p-8 md:p-12" data-reveal>
-        <span class="eyebrow">
-          <span class="eyebrow-line"></span>
-          Proximamente
-        </span>
-        <h1 class="section-title mt-4">La pagina de Contacto se desarrollara en la siguiente fase.</h1>
-      </div>
-    </div>
-  </section>
+<MainLayout
+  title="Contacto | SBAN Plateria"
+  description="Ponte en contacto con SBAN Plateria para consultas, disponibilidad y atencion personalizada."
+>
+  <ContactHeroSection />
+  <ContactFormSection />
+  <ContactExpectationsSection />
+  <ContactCtaSection />
 </MainLayout>

@@ -1,0 +1,89 @@
+---
+import SectionHeading from "@/components/common/SectionHeading.astro";
+import { contactTopics } from "@/data/site";
+---
+
+<section class="section-space">
+  <div class="app-container grid gap-6 xl:grid-cols-[0.9fr_1.1fr]">
+    <div>
+      <SectionHeading
+        eyebrow="Escribenos"
+        title="Un formulario base, claro y listo para crecer hacia un flujo de contacto mas completo."
+        copy="Dejamos una estructura limpia para recibir consultas generales, personalizaciones y solicitudes relacionadas con el catalogo."
+      />
+    </div>
+
+    <div class="glass-panel p-6 md:p-8" data-reveal>
+      <form class="grid gap-4">
+        <div class="grid gap-4 sm:grid-cols-2">
+          <label class="grid gap-2 text-sm font-semibold text-ink">
+            Nombre
+            <input
+              class="rounded-2xl border border-line bg-white/80 px-4 py-3 text-sm font-medium text-ink outline-none"
+              type="text"
+              name="name"
+              placeholder="Tu nombre"
+            />
+          </label>
+
+          <label class="grid gap-2 text-sm font-semibold text-ink">
+            Correo
+            <input
+              class="rounded-2xl border border-line bg-white/80 px-4 py-3 text-sm font-medium text-ink outline-none"
+              type="email"
+              name="email"
+              placeholder="tu@correo.com"
+            />
+          </label>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-2">
+          <label class="grid gap-2 text-sm font-semibold text-ink">
+            Tema
+            <span class="relative">
+              <select class="w-full appearance-none rounded-2xl border border-line bg-white/80 px-4 py-3 pr-12 text-sm font-medium text-ink outline-none">
+                {contactTopics.map((topic) => <option value={topic}>{topic}</option>)}
+              </select>
+              <span class="pointer-events-none absolute inset-y-0 right-4 flex items-center text-muted">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="m7 10 5 5 5-5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path>
+                </svg>
+              </span>
+            </span>
+          </label>
+
+          <label class="grid gap-2 text-sm font-semibold text-ink">
+            Telefono
+            <input
+              class="rounded-2xl border border-line bg-white/80 px-4 py-3 text-sm font-medium text-ink outline-none"
+              type="tel"
+              name="phone"
+              placeholder="+52 55..."
+            />
+          </label>
+        </div>
+
+        <label class="grid gap-2 text-sm font-semibold text-ink">
+          Mensaje
+          <textarea
+            class="min-h-36 rounded-[1.5rem] border border-line bg-white/80 px-4 py-3 text-sm font-medium text-ink outline-none"
+            name="message"
+            placeholder="Cuéntanos qué estás buscando, si viste una pieza específica o si necesitas orientación."
+          ></textarea>
+        </label>
+
+        <div class="flex flex-col gap-3 border-t border-line pt-4 sm:flex-row sm:items-center sm:justify-between">
+          <p class="text-sm leading-7 text-muted">
+            Este formulario es una base visual. En la siguiente fase puede conectarse con correo, CRM o automatizaciones.
+          </p>
+          <button
+            class="action-button action-button-primary w-full sm:w-auto"
+            type="button"
+          >
+            Enviar consulta
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

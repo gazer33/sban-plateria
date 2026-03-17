@@ -1,0 +1,43 @@
+---
+import ButtonLink from "@/components/common/ButtonLink.astro";
+import { contactMethods } from "@/data/site";
+---
+
+<section class="section-space pt-9">
+  <div class="app-container grid items-center gap-6 xl:grid-cols-[minmax(0,1.02fr)_minmax(22rem,0.98fr)]">
+    <div class="grid gap-6 py-2 md:py-6" data-reveal>
+      <span class="eyebrow">
+        <span class="eyebrow-line"></span>
+        Contacto
+      </span>
+      <h1 class="display-title">Una conversacion clara es el mejor inicio para encontrar la pieza correcta.</h1>
+      <p class="body-copy max-w-[64ch]">
+        Si buscas una pieza especifica, quieres revisar disponibilidad o necesitas orientacion para un regalo,
+        podemos ayudarte de forma cercana y ordenada. SBAN Plateria prioriza una atencion simple, directa y cuidada.
+      </p>
+      <div class="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+        <ButtonLink href="mailto:hola@sbanplateria.com" label="Escribir por correo" variant="primary" />
+        <ButtonLink href="/productos" label="Ver coleccion" />
+      </div>
+    </div>
+
+    <div class="glass-panel relative overflow-hidden p-5 sm:p-6 md:p-8" data-reveal data-parallax>
+      <div class="absolute inset-[10%] rounded-[1.75rem] border border-ink/7"></div>
+      <div class="absolute right-[12%] top-[16%] h-28 w-28 rounded-full border border-brand-strong/15"></div>
+      <div class="absolute bottom-[14%] left-[10%] h-36 w-36 rounded-full border border-brand-strong/12"></div>
+
+      <div class="relative grid gap-4">
+        {contactMethods.map((item) => (
+          <a
+            class="rounded-[1.5rem] border border-line bg-white/74 p-5 backdrop-blur-md transition duration-200 hover:-translate-y-0.5 hover:bg-white/90"
+            href={item.href}
+          >
+            <span class="text-[0.75rem] font-bold uppercase tracking-[0.14em] text-muted">{item.label}</span>
+            <strong class="mt-2 block text-[1.15rem] font-semibold">{item.value}</strong>
+            <p class="body-copy mt-3 text-sm">{item.description}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
