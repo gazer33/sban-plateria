@@ -1,6 +1,20 @@
 ---
 import SectionHeading from "@/components/common/SectionHeading.astro";
-import { productPreview } from "@/data/site";
+import { urlForProductImage, type CatalogProduct } from "@/lib/sanity";
+
+type ProductPreviewCard = {
+  name: string;
+  category: string;
+  price: string;
+  image?: CatalogProduct["image"];
+  fallbackShape: number;
+};
+
+interface Props {
+  products: ProductPreviewCard[];
+}
+
+const { products } = Astro.props;
 ---
 
 <section class="section-space">
@@ -14,24 +28,32 @@ import { productPreview } from "@/data/site";
     </div>
 
     <div class="grid gap-4 sm:grid-cols-2">
-      {productPreview.map((product, index) => (
+      {products.map((product, index) => (
         <article class="rounded-[1.625rem] border border-line bg-white/75 p-4 shadow-[var(--shadow-float)]" data-reveal>
           <div class="mb-4 overflow-hidden rounded-[1.375rem] bg-linear-to-b from-white/80 to-[#e6ebf1]/85" aria-hidden="true">
-            <svg viewBox="0 0 260 220">
-              <defs>
-                <linearGradient id={`piece-${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#ffffff"></stop>
-                  <stop offset="100%" stop-color="#c3cbd4"></stop>
-                </linearGradient>
-              </defs>
-              <rect x="18" y="18" width="224" height="184" rx="34" fill={`url(#piece-${index})`}></rect>
-              <path
-                d={index % 2 === 0 ? "M78 110c0-28 23-50 52-50s52 22 52 50-23 50-52 50-52-22-52-50Z" : "M84 67h92v86H84z"}
-                fill="none"
-                stroke="rgba(255,255,255,.9)"
-                stroke-width="8"
-              ></path>
-            </svg>
+            {product.image ? (
+              <img
+                src={urlForProductImage(product.image).width(720).height(620).url()}
+                alt={product.name}
+                class="aspect-[16/13] w-full object-cover"
+              />
+            ) : (
+              <svg viewBox="0 0 260 220">
+                <defs>
+                  <linearGradient id={`piece-${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#ffffff"></stop>
+                    <stop offset="100%" stop-color="#c3cbd4"></stop>
+                  </linearGradient>
+                </defs>
+                <rect x="18" y="18" width="224" height="184" rx="34" fill={`url(#piece-${index})`}></rect>
+                <path
+                  d={product.fallbackShape % 2 === 0 ? "M78 110c0-28 23-50 52-50s52 22 52 50-23 50-52 50-52-22-52-50Z" : "M84 67h92v86H84z"}
+                  fill="none"
+                  stroke="rgba(255,255,255,.9)"
+                  stroke-width="8"
+                ></path>
+              </svg>
+            )}
           </div>
           <div>
             <span class="block text-sm text-muted">{product.category}</span>

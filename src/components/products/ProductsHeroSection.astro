@@ -1,5 +1,15 @@
 ---
 import ButtonLink from "@/components/common/ButtonLink.astro";
+
+interface Props {
+  summary: {
+    totalProducts: number;
+    totalCategories: number;
+    totalCollections: number;
+  };
+}
+
+const { summary } = Astro.props;
 ---
 
 <section class="section-space pt-9">
@@ -9,13 +19,13 @@ import ButtonLink from "@/components/common/ButtonLink.astro";
         <span class="eyebrow-line"></span>
         Productos
       </span>
-      <h1 class="display-title">Una cuadrícula pensada para mostrar plata artesanal con orden, claridad y presencia.</h1>
+      <h1 class="display-title">Una cuadricula pensada para mostrar plata artesanal con orden, claridad y presencia.</h1>
       <p class="body-copy max-w-[64ch]">
-        Esta selección inicial reúne piezas clave de SBAN Platería. El sistema está preparado para crecer con nuevas
-        colecciones, filtros más avanzados y vistas de detalle sin perder la estética minimalista del sitio.
+        Esta seleccion reune piezas reales publicadas desde Sanity. El sistema esta preparado para crecer con nuevas
+        colecciones, filtros mas avanzados y vistas de detalle sin perder la estetica minimalista del sitio.
       </p>
       <div class="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-        <ButtonLink href="/contacto" label="Solicitar atención" variant="primary" />
+        <ButtonLink href="/contacto" label="Solicitar atencion" variant="primary" />
         <ButtonLink href="/nosotros" label="Conocer la marca" />
       </div>
     </div>
@@ -54,16 +64,16 @@ import ButtonLink from "@/components/common/ButtonLink.astro";
 
       <div class="relative mt-5 grid gap-3 sm:grid-cols-3">
         <div class="rounded-[1.25rem] border border-line bg-white/75 px-4 py-4">
-          <strong class="block font-display text-[2rem] leading-none">08</strong>
-          <span class="mt-2 block text-sm leading-6 text-muted">Piezas iniciales en el catálogo</span>
+          <strong class="block font-display text-[2rem] leading-none">{String(summary.totalProducts).padStart(2, "0")}</strong>
+          <span class="mt-2 block text-sm leading-6 text-muted">Piezas activas en el catalogo</span>
         </div>
         <div class="rounded-[1.25rem] border border-line bg-white/75 px-4 py-4">
-          <strong class="block font-display text-[2rem] leading-none">04</strong>
-          <span class="mt-2 block text-sm leading-6 text-muted">Categorías para ordenar la colección</span>
+          <strong class="block font-display text-[2rem] leading-none">{String(summary.totalCategories).padStart(2, "0")}</strong>
+          <span class="mt-2 block text-sm leading-6 text-muted">Categorias para ordenar la coleccion</span>
         </div>
         <div class="rounded-[1.25rem] border border-line bg-white/75 px-4 py-4">
-          <strong class="block font-display text-[2rem] leading-none">01</strong>
-          <span class="mt-2 block text-sm leading-6 text-muted">Sistema preparado para crecer</span>
+          <strong class="block font-display text-[2rem] leading-none">{String(summary.totalCollections).padStart(2, "0")}</strong>
+          <span class="mt-2 block text-sm leading-6 text-muted">Colecciones visibles desde Sanity</span>
         </div>
       </div>
     </div>

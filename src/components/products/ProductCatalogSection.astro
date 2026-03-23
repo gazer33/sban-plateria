@@ -1,6 +1,18 @@
 ---
 import SectionHeading from "@/components/common/SectionHeading.astro";
-import { productCatalog, productFilterGroups } from "@/data/site";
+import { urlForProductImage, type CatalogProduct } from "@/lib/sanity";
+
+interface Props {
+  products: CatalogProduct[];
+  filterGroups: {
+    categories: string[];
+    collections: string[];
+    availability: string[];
+    sort: string[];
+  };
+}
+
+const { products, filterGroups } = Astro.props;
 ---
 
 <section class="section-space">
@@ -28,7 +40,7 @@ import { productCatalog, productFilterGroups } from "@/data/site";
                 class="w-full appearance-none rounded-2xl border border-line bg-white/80 px-4 py-3 pr-12 text-sm font-medium text-ink outline-none"
                 data-filter-category
               >
-                {productFilterGroups.categories.map((item) => <option value={item}>{item}</option>)}
+                {filterGroups.categories.map((item) => <option value={item}>{item}</option>)}
               </select>
               <span class="pointer-events-none absolute inset-y-0 right-4 flex items-center text-muted">
                 <svg class="h-4 w-4" viewBox="0 0 24 24" aria-hidden="true">
@@ -45,7 +57,7 @@ import { productCatalog, productFilterGroups } from "@/data/site";
                 class="w-full appearance-none rounded-2xl border border-line bg-white/80 px-4 py-3 pr-12 text-sm font-medium text-ink outline-none"
                 data-filter-collection
               >
-                {productFilterGroups.collections.map((item) => <option value={item}>{item}</option>)}
+                {filterGroups.collections.map((item) => <option value={item}>{item}</option>)}
               </select>
               <span class="pointer-events-none absolute inset-y-0 right-4 flex items-center text-muted">
                 <svg class="h-4 w-4" viewBox="0 0 24 24" aria-hidden="true">
@@ -62,7 +74,7 @@ import { productCatalog, productFilterGroups } from "@/data/site";
                 class="w-full appearance-none rounded-2xl border border-line bg-white/80 px-4 py-3 pr-12 text-sm font-medium text-ink outline-none"
                 data-filter-availability
               >
-                {productFilterGroups.availability.map((item) => <option value={item}>{item}</option>)}
+                {filterGroups.availability.map((item) => <option value={item}>{item}</option>)}
               </select>
               <span class="pointer-events-none absolute inset-y-0 right-4 flex items-center text-muted">
                 <svg class="h-4 w-4" viewBox="0 0 24 24" aria-hidden="true">
@@ -79,7 +91,7 @@ import { productCatalog, productFilterGroups } from "@/data/site";
                 class="w-full appearance-none rounded-2xl border border-line bg-white/80 px-4 py-3 pr-12 text-sm font-medium text-ink outline-none"
                 data-filter-sort
               >
-                {productFilterGroups.sort.map((item) => <option value={item}>{item}</option>)}
+                {filterGroups.sort.map((item) => <option value={item}>{item}</option>)}
               </select>
               <span class="pointer-events-none absolute inset-y-0 right-4 flex items-center text-muted">
                 <svg class="h-4 w-4" viewBox="0 0 24 24" aria-hidden="true">
@@ -97,7 +109,7 @@ import { productCatalog, productFilterGroups } from "@/data/site";
       </aside>
 
       <div class="grid gap-4 sm:grid-cols-2 2xl:grid-cols-3" data-catalog-grid>
-        {productCatalog.map((product, index) => (
+        {products.map((product, index) => (
           <article
             class="rounded-[1.75rem] border border-line bg-white/75 p-4 shadow-[var(--shadow-float)]"
             data-product-card
@@ -110,29 +122,37 @@ import { productCatalog, productFilterGroups } from "@/data/site";
             data-reveal
           >
             <div class="mb-4 overflow-hidden rounded-[1.5rem] bg-linear-to-b from-white/80 to-[#e2e8ee]/88" aria-hidden="true">
-              <svg viewBox="0 0 280 240">
-                <defs>
-                  <linearGradient id={`catalog-${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#ffffff"></stop>
-                    <stop offset="100%" stop-color="#c4ccd5"></stop>
-                  </linearGradient>
-                </defs>
-                <rect x="22" y="22" width="236" height="196" rx="36" fill={`url(#catalog-${index})`}></rect>
-                <path
-                  d={index % 4 === 0
-                    ? "M90 120c0-28 22-50 50-50s50 22 50 50-22 50-50 50-50-22-50-50Z"
-                    : index % 4 === 1
-                      ? "M95 78h90v84H95z"
-                      : index % 4 === 2
-                        ? "M108 76c18 0 32 16 32 36s-14 36-32 36-32-16-32-36 14-36 32-36Zm70 0c18 0 32 16 32 36s-14 36-32 36-32-16-32-36 14-36 32-36Z"
-                        : "M88 154c20-44 44-66 72-66 37 0 52 35 88 35"}
-                  fill="none"
-                  stroke="rgba(255,255,255,.9)"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="8"
-                ></path>
-              </svg>
+              {product.image ? (
+                <img
+                  src={urlForProductImage(product.image).width(900).height(760).url()}
+                  alt={product.name}
+                  class="aspect-[7/6] w-full object-cover"
+                />
+              ) : (
+                <svg viewBox="0 0 280 240">
+                  <defs>
+                    <linearGradient id={`catalog-${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#ffffff"></stop>
+                      <stop offset="100%" stop-color="#c4ccd5"></stop>
+                    </linearGradient>
+                  </defs>
+                  <rect x="22" y="22" width="236" height="196" rx="36" fill={`url(#catalog-${index})`}></rect>
+                  <path
+                    d={index % 4 === 0
+                      ? "M90 120c0-28 22-50 50-50s50 22 50 50-22 50-50 50-50-22-50-50Z"
+                      : index % 4 === 1
+                        ? "M95 78h90v84H95z"
+                        : index % 4 === 2
+                          ? "M108 76c18 0 32 16 32 36s-14 36-32 36-32-16-32-36 14-36 32-36Zm70 0c18 0 32 16 32 36s-14 36-32 36-32-16-32-36 14-36 32-36Z"
+                          : "M88 154c20-44 44-66 72-66 37 0 52 35 88 35"}
+                    fill="none"
+                    stroke="rgba(255,255,255,.9)"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="8"
+                  ></path>
+                </svg>
+              )}
             </div>
 
             <div class="flex items-start justify-between gap-3">

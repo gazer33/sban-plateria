@@ -11,6 +11,8 @@
     "check": "astro check"
   },
   "dependencies": {
+    "@sanity/client": "^7.20.0",
+    "@sanity/image-url": "^1.2.0",
     "astro": "^5.2.0",
     "gsap": "^3.12.7"
   },

@@ -6,16 +6,21 @@ import FeaturedProductsSection from "@/components/home/FeaturedProductsSection.a
 import ValuesSection from "@/components/home/ValuesSection.astro";
 import ProductShowcaseSection from "@/components/home/ProductShowcaseSection.astro";
 import CtaSection from "@/components/home/CtaSection.astro";
+import { fetchCatalogProducts, getFeaturedProducts, getPreviewProducts } from "@/lib/sanity";
+
+const products = await fetchCatalogProducts();
+const featuredProducts = getFeaturedProducts(products);
+const previewProducts = getPreviewProducts(products);
 ---
 
 <MainLayout
-  title="SBAN Platería | Joyería de plata artesanal"
-  description="SBAN Platería crea piezas de plata artesanal con una estética contemporánea, minimalista y premium."
+  title="SBAN Plateria | Joyeria de plata artesanal"
+  description="SBAN Plateria crea piezas de plata artesanal con una estetica contemporanea, minimalista y premium."
 >
   <HeroSection />
   <BrandIntroSection />
-  <FeaturedProductsSection />
+  <FeaturedProductsSection products={featuredProducts} />
   <ValuesSection />
-  <ProductShowcaseSection />
+  <ProductShowcaseSection products={previewProducts} />
   <CtaSection />
 </MainLayout>

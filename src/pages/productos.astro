@@ -4,14 +4,19 @@ import ProductsHeroSection from "@/components/products/ProductsHeroSection.astro
 import ProductCatalogSection from "@/components/products/ProductCatalogSection.astro";
 import ProductNotesSection from "@/components/products/ProductNotesSection.astro";
 import ProductsCtaSection from "@/components/products/ProductsCtaSection.astro";
+import { fetchCatalogProducts, getCatalogSummary, getProductFilterGroups } from "@/lib/sanity";
+
+const products = await fetchCatalogProducts();
+const filterGroups = getProductFilterGroups(products);
+const summary = getCatalogSummary(products);
 ---
 
 <MainLayout
   title="Productos | SBAN Plateria"
-  description="Explora la seleccion inicial de piezas artesanales de SBAN Plateria con filtros y una cuadrícula limpia."
+  description="Explora piezas artesanales de SBAN Plateria con filtros y una cuadricula conectada a Sanity."
 >
-  <ProductsHeroSection />
-  <ProductCatalogSection />
+  <ProductsHeroSection summary={summary} />
+  <ProductCatalogSection products={products} filterGroups={filterGroups} />
   <ProductNotesSection />
   <ProductsCtaSection />
 </MainLayout>

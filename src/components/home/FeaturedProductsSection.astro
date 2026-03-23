@@ -1,6 +1,19 @@
 ---
 import SectionHeading from "@/components/common/SectionHeading.astro";
-import { featuredProducts } from "@/data/site";
+import { urlForProductImage, type CatalogProduct } from "@/lib/sanity";
+
+type FeaturedProductCard = {
+  title: string;
+  description: string;
+  tag: string;
+  image?: CatalogProduct["image"];
+};
+
+interface Props {
+  products: FeaturedProductCard[];
+}
+
+const { products } = Astro.props;
 ---
 
 <section class="section-space">
@@ -12,20 +25,28 @@ import { featuredProducts } from "@/data/site";
     />
 
     <div class="grid gap-5 lg:grid-cols-3">
-      {featuredProducts.map((item, index) => (
+      {products.map((item, index) => (
         <article class="glass-panel grid gap-4 p-5 md:p-6" data-reveal style={`--delay: ${index * 0.08}s`}>
-          <div class="rounded-[1.5rem] bg-linear-to-b from-white/70 to-[#d8dee5]/75 p-3" aria-hidden="true">
-            <svg viewBox="0 0 320 260">
-              <defs>
-                <linearGradient id={`metal-${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#ffffff"></stop>
-                  <stop offset="50%" stop-color="#bcc4ce"></stop>
-                  <stop offset="100%" stop-color="#f0f3f6"></stop>
-                </linearGradient>
-              </defs>
-              <rect x="30" y="30" width="260" height="200" rx="42" fill={`url(#metal-${index})`} opacity="0.7"></rect>
-              <circle cx="160" cy="130" r={index === 0 ? 54 : index === 1 ? 42 : 60} fill="none" stroke="rgba(255,255,255,.9)" stroke-width="8"></circle>
-            </svg>
+          <div class="overflow-hidden rounded-[1.5rem] bg-linear-to-b from-white/70 to-[#d8dee5]/75 p-3" aria-hidden="true">
+            {item.image ? (
+              <img
+                src={urlForProductImage(item.image).width(960).height(720).url()}
+                alt={item.title}
+                class="aspect-[16/13] w-full rounded-[1.15rem] object-cover"
+              />
+            ) : (
+              <svg viewBox="0 0 320 260">
+                <defs>
+                  <linearGradient id={`metal-${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#ffffff"></stop>
+                    <stop offset="50%" stop-color="#bcc4ce"></stop>
+                    <stop offset="100%" stop-color="#f0f3f6"></stop>
+                  </linearGradient>
+                </defs>
+                <rect x="30" y="30" width="260" height="200" rx="42" fill={`url(#metal-${index})`} opacity="0.7"></rect>
+                <circle cx="160" cy="130" r={index === 0 ? 54 : index === 1 ? 42 : 60} fill="none" stroke="rgba(255,255,255,.9)" stroke-width="8"></circle>
+              </svg>
+            )}
           </div>
           <span class="inline-flex w-fit rounded-full bg-white/80 px-3 py-1.5 text-[0.76rem] font-bold uppercase tracking-[0.08em] text-muted">
             {item.tag}
