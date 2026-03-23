@@ -21,7 +21,7 @@ const { products } = Astro.props;
     <SectionHeading
       eyebrow="Seleccion curada"
       title="Piezas destacadas que expresan presencia, textura y luz."
-      copy="Una muestra inicial de la propuesta SBAN: plata hecha a mano con una lectura contemporanea y acabados de alto nivel."
+      copy="Una muestra de la propuesta SBAN: plata 925 con una lectura contemporanea y acabados de alto nivel."
     />
 
     <div class="grid gap-5 lg:grid-cols-3">
@@ -33,6 +33,8 @@ const { products } = Astro.props;
                 src={urlForProductImage(item.image).width(960).height(720).url()}
                 alt={item.title}
                 class="aspect-[16/13] w-full rounded-[1.15rem] object-cover"
+                loading="lazy"
+                decoding="async"
               />
             ) : (
               <svg viewBox="0 0 320 260">

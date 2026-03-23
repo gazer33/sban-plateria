@@ -119,7 +119,9 @@ const currentPath = Astro.url.pathname;
 
   if (header instanceof HTMLElement && headerInner instanceof HTMLElement) {
     const syncHeaderState = () => {
-      headerInner.classList.toggle("shadow-[0_18px_50px_rgba(24,32,42,0.08)]", window.scrollY > 24);
+      const scrolled = window.scrollY > 24;
+      headerInner.classList.toggle("shadow-[0_18px_50px_rgba(24,32,42,0.08)]", scrolled);
+      header.toggleAttribute("data-scrolled", scrolled);
     };
 
     syncHeaderState();

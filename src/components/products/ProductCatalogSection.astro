@@ -19,18 +19,24 @@ const { products, filterGroups } = Astro.props;
   <div class="app-container">
     <SectionHeading
       eyebrow="Catalogo"
-      title="Filtros claros y una cuadricula modular para navegar la coleccion con calma."
-      copy="Usamos controles simples para conservar el tono refinado del sitio y facilitar una lectura mas ordenada del catalogo."
+      title="Explora la coleccion."
+      copy="Filtra por categoria, coleccion o disponibilidad para encontrar tu pieza ideal."
     />
 
     <div class="grid gap-6 xl:grid-cols-[18rem_minmax(0,1fr)]">
       <aside class="glass-panel h-fit p-5 md:p-6" data-reveal>
-        <div class="grid gap-5">
-          <div>
+        <details class="xl:contents" open>
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-3 xl:hidden">
             <p class="text-sm font-bold uppercase tracking-[0.16em] text-muted">Filtrar y ordenar</p>
-            <p class="mt-2 text-sm leading-7 text-muted">
-              Estos dropdowns ya estructuran el catalogo para una futura tienda mas completa.
-            </p>
+            <span class="grid h-8 w-8 place-items-center rounded-full border border-line bg-white/80 text-muted" aria-hidden="true">
+              <svg class="h-4 w-4" viewBox="0 0 24 24">
+                <path d="m7 10 5 5 5-5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path>
+              </svg>
+            </span>
+          </summary>
+        <div class="mt-5 grid gap-5 xl:mt-0">
+          <div class="hidden xl:block">
+            <p class="text-sm font-bold uppercase tracking-[0.16em] text-muted">Filtrar y ordenar</p>
           </div>
 
           <label class="grid gap-2 text-sm font-semibold text-ink">
@@ -101,11 +107,8 @@ const { products, filterGroups } = Astro.props;
             </span>
           </label>
 
-          <div class="rounded-[1.25rem] bg-white/70 p-4 text-sm leading-7 text-muted">
-            <strong class="mb-1 block text-ink">Nota</strong>
-            La coleccion mantiene un formato curado: pocas piezas, mejor lectura visual y base lista para escalar.
-          </div>
         </div>
+        </details>
       </aside>
 
       <div class="grid gap-4 sm:grid-cols-2 2xl:grid-cols-3" data-catalog-grid>
@@ -127,6 +130,8 @@ const { products, filterGroups } = Astro.props;
                   src={urlForProductImage(product.image).width(900).height(760).url()}
                   alt={product.name}
                   class="aspect-[7/6] w-full object-cover"
+                  loading="lazy"
+                  decoding="async"
                 />
               ) : (
                 <svg viewBox="0 0 280 240">

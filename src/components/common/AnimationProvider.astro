@@ -8,17 +8,21 @@
 
   if (!prefersReducedMotion) {
     gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((element) => {
+      const delay = parseFloat(element.style.getPropertyValue("--delay") || "0") || 0;
+
       gsap.fromTo(
         element,
         { autoAlpha: 0, y: 32 },
         {
           autoAlpha: 1,
           y: 0,
-          duration: 0.9,
+          duration: 0.85,
+          delay,
           ease: "power2.out",
           scrollTrigger: {
             trigger: element,
-            start: "top 82%"
+            start: "top 85%",
+            once: true
           }
         }
       );
@@ -26,24 +30,13 @@
 
     gsap.utils.toArray<HTMLElement>("[data-parallax]").forEach((element) => {
       gsap.to(element, {
-        yPercent: -10,
+        yPercent: -8,
         ease: "none",
         scrollTrigger: {
           trigger: element,
-          scrub: 1.1
+          scrub: 0.8
         }
       });
     });
-
-    const header = document.querySelector("[data-header]");
-
-    if (header) {
-      ScrollTrigger.create({
-        start: 20,
-        onUpdate: ({ scroll }) => {
-          header.toggleAttribute("data-scrolled", scroll() > 24);
-        }
-      });
-    }
   }
 </script>

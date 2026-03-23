@@ -8,18 +8,18 @@ export const navigationItems = [
 export const featuredProducts = [
   {
     title: "Anillos de plata fina",
-    description: "Piezas pulidas a mano con siluetas sobrias y acabados de alto brillo.",
+    description: "Piezas con siluetas sobrias y acabados de alto brillo.",
     tag: "Coleccion destacada"
   },
   {
-    title: "Collares artesanales",
+    title: "Collares de plata",
     description: "Disenos pensados para elevar looks cotidianos con un acento refinado.",
     tag: "Edicion especial"
   },
   {
     title: "Pulseras con textura",
     description: "Detalles organicos que celebran la nobleza de la plata trabajada.",
-    tag: "Hecho a mano"
+    tag: "Acabado fino"
   }
 ];
 
@@ -53,7 +53,7 @@ export const values = [
   },
   {
     title: "Hecho con intencion",
-    description: "Cada pieza se desarrolla con ritmo artesanal, atencion al detalle y una vision contemporanea."
+    description: "Cada pieza se desarrolla con atencion al detalle y una vision contemporanea del diseno en plata."
   },
   {
     title: "Diseno atemporal",
@@ -68,7 +68,7 @@ export const aboutHighlights = [
   },
   {
     title: "Oficio visible",
-    description: "Valoramos el trabajo manual, las texturas reales y el tiempo necesario para que cada detalle quede resuelto."
+    description: "Valoramos las texturas reales, el detalle preciso y el tiempo necesario para que cada pieza quede bien resuelta."
   },
   {
     title: "Vision contemporanea",
@@ -89,8 +89,8 @@ export const aboutProcess = [
   },
   {
     step: "03",
-    title: "Trabajo artesanal",
-    description: "La plata se corta, suelda, pule y afina a mano para conservar el caracter de su manufactura."
+    title: "Manufactura",
+    description: "La plata se corta, suelda, pule y afina con precision para respetar el caracter del material."
   },
   {
     step: "04",
@@ -139,11 +139,11 @@ export const productCatalog = [
     name: "Origen",
     category: "Pulseras",
     collection: "Texturas",
-    finish: "Martillado manual",
+    finish: "Martillado",
     price: "$1,920 MXN",
     availability: "Disponible",
-    badge: "Hecho a mano",
-    description: "Pulsera de caracter organico con marcas sutiles del trabajo manual."
+    badge: "Acabado fino",
+    description: "Pulsera de caracter organico con textura sutil y volumen contenido."
   },
   {
     name: "Reflejo",
@@ -173,7 +173,7 @@ export const productCatalog = [
     price: "$2,280 MXN",
     availability: "Disponible",
     badge: "Edicion especial",
-    description: "Pulsera estructurada con una textura lineal inspirada en el tejido manual."
+    description: "Pulsera estructurada con una textura lineal de acabado preciso."
   },
   {
     name: "Ladera",

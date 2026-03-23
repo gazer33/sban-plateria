@@ -22,8 +22,8 @@ const { products } = Astro.props;
     <div>
       <SectionHeading
         eyebrow="Vista previa"
-        title="Una cuadricula pensada para crecer con futuras colecciones."
-        copy="La base visual del catalogo ya esta preparada para escalar con nuevas lineas, filtros y paginas de detalle sin romper la consistencia del sistema."
+        title="Una seleccion de la coleccion actual."
+        copy="Explora algunas de nuestras piezas mas recientes. Visita el catalogo para ver la coleccion completa con filtros y disponibilidad."
       />
     </div>
 
@@ -36,6 +36,8 @@ const { products } = Astro.props;
                 src={urlForProductImage(product.image).width(720).height(620).url()}
                 alt={product.name}
                 class="aspect-[16/13] w-full object-cover"
+                loading="lazy"
+                decoding="async"
               />
             ) : (
               <svg viewBox="0 0 260 220">

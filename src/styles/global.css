@@ -63,7 +63,7 @@
 
 @utility app-container {
   margin-inline: auto;
-  width: min(100% - 1rem, 1180px);
+  width: min(100% - 2rem, 1180px);
 }
 
 @utility section-space {
@@ -100,6 +100,10 @@
 
 @utility action-button-primary {
   @apply border-transparent bg-linear-to-br from-[#18202a] to-[#36404d] text-[#f8f7f4] hover:bg-linear-to-br hover:from-[#121920] hover:to-[#303a45] focus-visible:bg-linear-to-br focus-visible:from-[#121920] focus-visible:to-[#303a45];
+}
+
+@utility parallax-layer {
+  will-change: transform;
 }
 
 @utility sr-only {
